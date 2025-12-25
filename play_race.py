@@ -55,7 +55,8 @@ def main():
                     action, _ = model.predict(obs)
                     
                     # Делаем шаг в красивой среде
-                    obs, reward, done, truncated, info = env_show.step(action)
+                    obs, reward, terminated, truncated, info = env_show.step(action)
+                    done = terminated or truncated  # Эпизод завершен если terminated или truncated
                     total_reward += reward
                     
                     # Обработка выхода через крестик окна во время просмотра
